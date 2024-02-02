@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/assets/css/addTaskStyles.css}"/>
+    <style>
+        .form-group {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .form-group label {
+            width: 100%;
+            display: inline-block;
+        }
+
+        .form-group select,
+        .form-group textarea,
+        .form-group input {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add Task</h2>
+    <hr>
+
+    <form th:action="@{/To/Do/save/tasks/}" th:object="${task}" method="post" class="form-group"
+          onsubmit="return clearTaskId();">
+
+        <input type="hidden" th:field="*{taskId}" id="taskId"/>
+        <input type="hidden" th:field="*{createdAt}"/>
+        <input type="hidden" th:field="*{status}"/>
+
+        <div class="form-group">
+            <label for="taskName">Task Name:</label>
+            <input type="text" class="form-control" id="taskName" th:field="*{taskName}" required/>
+            <span th:if="${#fields.hasErrors('taskName')}" class="text-danger" th:errors="*{taskName}"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" th:field="*{description}" required></textarea>
+            <span th:if="${#fields.hasErrors('description')}" class="text-danger" th:errors="*{description}"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="priority">Priority:</label>
+            <select class="form-control" id="priority" th:field="*{priority}" required>
+                <option value="LOW">Low</option>
+                <option value="INTERMEDIATE">Intermediate</option>
+                <option value="HIGH">High</option>
+            </select>
+            <span th:if="${#fields.hasErrors('priority')}" class="text-danger" th:errors="*{priority}"></span>
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold;">Number of tasks you can add:</label>
+            <span th:text="' ' + ${tasksNumber} + ' '"
+                  style="background-color: #f0f0f0; padding: 5px; border: 1px solid #ccc;"></span>
+        </div>
+
+        <hr>
+
+        <div th:if="${errorInfo != null}" class="alert alert-danger mt-3">
+            <strong>Error:</strong>
+            <ul>
+                <li th:each="error : ${errorInfo}" th:text="${error.message}"></li>
+            </ul>
+        </div>
+
+        <div th:if="${info != null}" class="alert alert-success mt-3">
+            <strong>
+                <span th:text="${info}"></span>
+            </strong>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Task</button>
+    </form>
+    <hr>
+    <a th:href="@{/To/Do/list/tasks/}" class="btn btn-secondary mt-3">Back to Task List</a>
+</div>
+
+<script>
+    function clearTaskId() {
+        document.getElementById('taskId').value = '';
+        return true;
+    }
+</script>
+
+</body>
+</html>

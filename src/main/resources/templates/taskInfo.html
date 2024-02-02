@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/assets/css/taskInfoStyles.css}"/>
+</head>
+<body>
+
+<div class="container">
+
+    <div th:if="${task}">
+        <h3>Task Details:</h3>
+        <p><strong>Task Name:</strong> <span th:text="${task.taskName}"></span></p>
+        <hr>
+        <p><strong>Description:</strong> <span th:text="${task.description}"></span></p>
+        <hr>
+        <p><strong>Priority:</strong> <span th:text="${task.priority}"></span></p>
+        <hr>
+        <p><strong>Created At:</strong> <span th:text="${#temporals.format(task.createdAt, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
+        <hr>
+        <p><strong>Status:</strong> <span th:text="${task.status}"></span></p>
+    </div>
+
+
+    <a th:href="@{/To/Do/list/tasks/}" class="btn btn-primary">Back to Task List</a>
+</div>
+
+</body>
+</html>
