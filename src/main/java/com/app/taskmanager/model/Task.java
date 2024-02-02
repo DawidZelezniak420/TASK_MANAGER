@@ -24,7 +24,7 @@ public class Task implements Comparable<Task> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long taskId;
 
-    @NotBlank
+    @NotBlank(message = TASK_NAME_NOT_BLANK_INFO)
     @Size(min = 3, max = 50, message = TASK_NAME_SIZE_INFO)
     private String taskName;
 
