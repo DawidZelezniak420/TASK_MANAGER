@@ -25,7 +25,7 @@ public class Task implements Comparable<Task> {
     private Long taskId;
 
     @NotBlank(message = TASK_NAME_NOT_BLANK_INFO)
-    @Size(min = 3, max = 50, message = TASK_NAME_SIZE_INFO)
+    @Size(min = 3, max = 25, message = TASK_NAME_SIZE_INFO)
     private String taskName;
 
     @NotEmpty(message = DESCRIPTION_INFO)
