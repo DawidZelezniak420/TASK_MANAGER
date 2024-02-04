@@ -67,7 +67,7 @@ public class TaskServiceImpl implements TaskService {
         return TASKS_LIMIT - taskRepository.count();
     }
 
-    //task contains old values for fields taskId , createdAt and new values for other fields
+
     private void setTaskParams(Task taskFromDb, Task task) {
         taskFromDb.setTaskName(task.getTaskName());
         taskFromDb.setDescription(task.getDescription());

@@ -18,7 +18,7 @@ public class TaskManagerApplication {
 
 
     //generate sample values
-    @Bean
+   @Bean
     public CommandLineRunner commandLineRunner(TaskRepository taskRepository) {
         return args ->
         {
