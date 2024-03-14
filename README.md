@@ -30,12 +30,12 @@ Otwórz przeglądarkę i przejdź do http://localhost:9000/To/Do/list/tasks/  gd
 The Task Manager application is a platform for task management, allowing users to add, delete, update, and browse tasks.
 
 ## Features
-Users can add new tasks, specifying their name, description, and priority.
-Limit of 100 tasks (no need for users to set a larger quantity).
-Ability to update existing tasks, such as changing the name, description, priority, or status.
-Users can delete tasks that have been completed or are no longer needed.
-The system ensures the uniqueness of task names.
-Display information about a specific task.
+* Users can add new tasks, specifying their name, description, and priority.
+* Limit of 100 tasks (no need for users to set a larger quantity).
+* Ability to update existing tasks, such as changing the name, description, priority, or status.
+* Users can delete tasks that have been completed or are no longer needed.
+* The system ensures the uniqueness of task names.
+* Display information about a specific task.
 
 ## Task List
 Users have access to a task list, which is sorted by priority, and if task priorities are the same, tasks are sorted alphabetically by name.
